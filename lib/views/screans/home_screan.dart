@@ -27,33 +27,43 @@ class _MyHomePageState extends State<MyHomePage> {
     _loadData();
   }
 
-  // final List<Map<String, String>> users = [
-  //   {'name': 'John Doe', 'email': 'john.doe@example.com'},
-  //   {'name': 'Jane Smith', 'email': 'jane.smith@example.com'},
-  //   {'name': 'Bob Johnson', 'email': 'bob.johnson@example.com'},
-  //   {'name': 'Bob Johnson', 'email': 'bob.johnson@example.com'},
-  //   {'name': 'Bob Johnson', 'email': 'bob.johnson@example.com'},
-  //   {'name': 'Bob Johnson', 'email': 'bob.johnson@example.com'},
-  //   {'name': 'Bob Johnson', 'email': 'bob.johnson@example.com'},
-  //   // ادامه دادن داده‌ها
-  // ];
+ 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text("ماریان"),
         ),
-        body: ListView.builder(
-            itemCount: _listProducts.length,
-            itemBuilder: (BuildContext context, int i) {
-              return ListTile(
-                title: Text(_listProducts[i].title ?? ""),
-                subtitle: Text(_listProducts[i].id.toString() ?? ''),
-                leading: Text(_listProducts[i].price.toString()?? ''),
-              );
-            })
+        body: Column(
+          children: [
+            Form(child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(),
+                  ),
+                ),
+                IconButton(onPressed: (){
+
+                }, icon: Icon(Icons.search))
+              ],
+            )),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: _listProducts.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    return ListTile(
+                      title: Text(_listProducts[i].title ?? ""),
+                      subtitle: Text(_listProducts[i].id.toString() ?? ''),
+                      leading: Text(_listProducts[i].price.toString()?? ''),
+                    );
+                  }),
+            ),
+          ],
+        )
         // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
